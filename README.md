@@ -1,6 +1,6 @@
 # COUNTRIES
 
-#### Live Website: country-web.herokuapp.com
+#### Live Website: https://country-web.herokuapp.com/
 
 #### Video Demo: https://youtu.be/j1rgV6FgZRE
 
