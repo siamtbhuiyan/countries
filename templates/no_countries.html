@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+{% block title %}
+No Countries
+{% endblock %}
+{% block nav %}
+<form action="/search" method="GET" class="navbar-nav search-form">
+    <input type="search" autocomplete="off" autofocus name="q" placeholder="Search" class="input">
+    <input type="submit" class="input-btn" value="Search">
+</form>
+<form action="/filter" method="GET" class="navbar-nav select-form">
+    <select class="form-select ms-auto" aria-label="Default select example" name="region">
+        <option selected>Filter by region</option>
+        <option value="africa" class="africa">Africa</option>
+        <option value="asia" class="asia">Asia</option>
+        <option value="americas" class="americas">America</option>
+        <option value="europe" class="europe">Europe</option>
+        <option value="oceania" class="oceania">Oceania</option>
+    </select>
+</form>
+{%endblock%}
+{% block main %}
+    <h1 class="title">No Countries Found</h1>
+{% endblock %}

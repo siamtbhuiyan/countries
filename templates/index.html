@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+{% block title %}
+Country App
+{% endblock %}
+{% block nav %}
+<form action="/search" method="GET" class="navbar-nav search-form">
+    <input type="search" autocomplete="off" autofocus name="q" placeholder="Search" class="input">
+    <input type="submit" class="input-btn" value="Search">
+</form>
+<form action="/filter" method="GET" class="navbar-nav select-form">
+    <select class="form-select ms-auto" aria-label="Default select example" name="region">
+        <option selected>Filter by region</option>
+        <option value="africa" class="africa">Africa</option>
+        <option value="asia" class="asia">Asia</option>
+        <option value="americas" class="americas">America</option>
+        <option value="europe" class="europe">Europe</option>
+        <option value="oceania" class="oceania">Oceania</option>
+    </select>
+</form>
+{%endblock%}
+{% block main %}
+<div class="row">
+    {% for country in countries %}
+    <div class="col-lg-3 col-md-4 col-sm-6">
+        <div class="card">
+            <div class="img">
+                <img class="card-img-top img-fluid" src="{{ country['flag'] }}" alt="" />
+            </div>
+            <div class="card-body">
+                <h4 class='card-title'>{{ country['name'] }}</h4>
+                <div class="attributes"><span class="bold">Population: </span>{{ country['population'] }}</div>
+                <div class="attributes"><span class="bold">Region: </span>{{ country['region'] }}</div>
+                <div class="attributes"><span class="bold">Capital: </span>{{ country['capital'] }}</div>
+                <form action="/country" method="GET">
+                    <button class="country-btn" type="submit" value="{{ country['name'] }}" name="country">View Country</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

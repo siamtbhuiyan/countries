@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+{% block title %}
+{{ country["name"] }}
+{% endblock %}
+{% block nav %}
+    <button class ="back-btn" onclick="history.back()">Go Back</button>
+{% endblock %}
+{% block main %}
+<div class="flag">
+    <img src="{{ country['flag'] }}">
+</div>
+<h1 class="title">{{ country["name"] }}</h1>
+<div class="row details">
+    <div class="col-lg-6">
+        <p><span class="bold">Population: </span>{{ country['population'] }}</p>
+        <p><span class="bold">Region: </span>{{ country['region'] }}</p>
+        <p><span class="bold">Sub Region: </span>{{ country['subregion'] }}</p>
+        <p><span class="bold">Capital: </span>{{ country['capital'] }}</p>
+    </div>
+    <div class="col-lg-6">
+        <p><span class="bold">Top Level Domain: </span>{{ country['tld'][0] }}</p>
+        <p><span class="bold">Currencies: </span>
+        {% for currency in country["currencies"]%}
+            {{ currency }}
+        {% endfor %}
+        </p>
+        <p><span class="bold">Languages: </span>
+        {% for language in country["languages"]%}
+            {{ language }}
+        {% endfor %}
+        </p>
+    </div>
+</div>
+{% if country["borders"] %}
+<div class="details">
+    <p class="form-p"><span class="bold">Border Countries: </span>
+        {% for border in country["borders"]%}
+            <form action="/country" method="GET" class="border-forms">
+                <input class="border-btn" type="submit" value="{{ border }}" name="country" id="{{ border }}">
+            </form>
+        {% endfor %}
+    </p>
+</div>
+{% endif %}
+{% endblock %}
